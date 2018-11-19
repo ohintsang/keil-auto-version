@@ -56,6 +56,7 @@ int ConfigBuildDate(char *argv[], char *DATE_CODE)
                 else
                 {
                     printf("Date not match, reset build number\n");
+                    sprintf(DATE_CODE, "%d %d %d", tm.tm_mon + 1, tm.tm_mday, tm.tm_year - 100);
                 }
             }
 
@@ -308,7 +309,7 @@ int main(int argc, char *argv[])
 	int isDateMatch = ConfigBuildDate(argv, DATE_CODE);
     IncBuildNumber(argv, isDateMatch);
 
-    //printf("DATECODE = %s\n", DATE_CODE);
+    printf("DATECODE = %s\n", DATE_CODE);
     ConfigVersionNumber(argv, DATE_CODE);
     ConfigVersionTime(argv, TIME_CODE);
 
